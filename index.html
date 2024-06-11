@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width-device-width", initial-scale="1.0"> 
+        <link rel="stylesheet" href="style.css"> 
+        <title>Address Book</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>Address Book</h1>
+            <input id="nameField" type="text" placeholder="Enter Name" v-model="inputName">
+            <br>
+            <input id="emailField" type="text" placeholder="Enter Email" v-model="inputEmail">
+            <br>
+            <button v-on:click="recordAddress()"
+            v-show="inputName.length > 1 && inputEmail.length > 1"
+            >Record Address</button>
+            <ul>
+                <li v-for="(item, index) in history">
+                    <p>Name: {{item.name}}</p>
+                    <p>Email: {{item.email}}</p>
+                    <button v-on:click="deleteItem(index)">X</button>
+                    <button v-on:click="editItem(index)">Edit</button>
+                </li>
+            </ul>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
